@@ -1,0 +1,45 @@
+<div class="centered-content">
+    <div class="task-manager-box">
+
+        <div class="sidebar has-background-white">
+            <h1 class="title">
+               Show Lists
+            </h1>
+
+            <div class="list-menu">
+
+                <a class="list-menu-item" *ngFor="let tasklist of tasklists" [routerLink]="['/task-lists', tasklist._id]" routerLinkActive="is-active">
+                    <p>{{ tasklist.title }}</p>
+                  </a>
+
+            </div>
+
+            <button class="button" routerLink='/new-task-list'>Add</button>
+       
+        </div>
+
+        <div class="task-list-box has-background-light">
+            <div *ngIf = "tasks">
+                <h1 class="title">
+                    Todos
+                </h1>
+                <!-- Task Elements -->
+                <div class="task" *ngFor="let task of tasks" (click) = "onTaskClick(task)" [ngClass] = "{'completed': task.completed}">
+                    <p>{{ task.title }}</p>
+                </div>
+
+                <h3 class="empty-state-text" *ngIf="tasks.length === 0"> There is no todos in this list</h3>
+
+                <button routerLink = "./new-task" class="circle-add-button">
+                    <img src="../../../assets/plus-icon.svg" class="has-text-white">
+                </button>
+            </div>
+
+            <div *ngIf = "!tasks">
+                <h3 class="empty-state-text"> Please select a tasklist from the sidebar</h3>
+
+            </div>
+            
+        </div>
+    </div>
+</div>

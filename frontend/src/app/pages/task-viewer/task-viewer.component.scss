@@ -1,0 +1,107 @@
+@import '../../../main-styles.scss';
+
+.task-manager-box{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    max-height: 680px;
+    max-width: 1000px;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 42px;
+    background: white;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.task-list-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 42px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.title{
+    font-family: 'Lato';
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.list-menu{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    flex-grow: 1;
+
+    .list-menu-item{
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        border-radius: 5px;
+
+        width: 100%;
+        color: #101011;
+        
+
+        &:hover{
+            background: $light;
+        }
+
+        &.is-active{
+            background-color: #dadae6;
+        }
+    
+    }
+}
+
+.task{
+    background: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+
+    &:not(.completed){
+        
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+        cursor: pointer;
+
+        &:active{
+            transform: scale(0.95);
+        }
+
+        &:hover{
+            box-shadow: 0 0 0 5px #eeeeee;
+        }
+
+    }
+
+    &.completed {
+        text-decoration: line-through;
+        opacity: 0.8;
+    }
+}
+
+.circle-add-button {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    bottom: 35px;
+    right: 35px;
+    border-radius: 50%; // to make the button a circle
+}
+
+.empty-state-text {
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+
+
+}
